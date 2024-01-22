@@ -39,8 +39,12 @@ This package is located within 'apps/serverless'. Follow the README instructions
 
 After setup and configuration, launch the serverless ( twilio serverless:start ) to run locally on port 3000.
 
+[Serverless deployment](https://www.twilio.com/docs/labs/serverless-toolkit/deploying) to the Twilio account is possible.  The serverless domain should be noted for update of the Flex Plugin .env variable.
+
 ### Import Studio Flow
 This package is located within 'apps/studio'. Within Twilio Studio, create a "New Flow" and import the JSON (copy/paste) from this resource.
+
+NOTE:  Be sure to revisit the Studio Flow to configure the Media Stream wss URI and SendToFlex Taskrouter configuration.
 
 ### Flex Plugin - Setup and Configure
 
@@ -63,3 +67,5 @@ While logged into the Twilio Flex account via Twilio Console, launch the Flex Pl
 ```sh
 twilio flex:plugins:start
 ```
+[Deployment of the Flex plugin](https://www.twilio.com/docs/flex/developer/plugins/cli/deploy-and-release) to the Twilio Account can be achieved. Be assured that the .env variables are configured appropriately prior to deployment.
+

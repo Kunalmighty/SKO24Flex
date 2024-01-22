@@ -92,94 +92,74 @@ console.log('main props')
 
     let layout = (
         <div>
-            {/* <Box>
-                <Card padding="space70">
-                    <Grid gutter="space20">
-                        <Column span={12}>
-                            <Heading as="h2" variant="heading20" marginBottom="space0">
-                                {'Transcription'}
-                            </Heading>
-                        </Column>
+          <Box width={'100%'} overflow="scroll" inset={undefined} padding={'space40'} backgroundColor={'colorBackgroundBody'}>
+            <Stack orientation={'vertical'} spacing={'space40'}>
+              <>
+                <Label htmlFor="caller_text" required>
+                  Call (real-time) transcript
+                </Label>
+                <TextArea
+                  onChange={() => {}}
+                  id="caller_text"
+                  name="caller_text"
+                  insertBefore={
+                    <Text color="colorTextWeak" as="span" fontWeight="fontWeightSemibold">
+                      Caller
+                    </Text>
+                  }
+                  required
+                  value={intermediateResult}
+                />
+              </>
 
-                        <Column span={12}>
-                            <Box display="flex" marginLeft="space60" justifyContent="space-between">
-                                <Paragraph marginBottom="space0">
-                                    {'There is no summary available yet as the agent is about to start a conversation with the customer'}
-                                </Paragraph>
-                            </Box>
-                        </Column>                                  
-                    </Grid>
-                </Card>
-            </Box> */}
+              <AiSuggestion transcript={transcript} />
 
-<Box width={'100%'} overflow="scroll" inset={undefined} padding={'space40'} backgroundColor={'colorBackgroundBody'}>
-      <Stack orientation={'vertical'} spacing={'space40'}>
-        <>
-          <Label htmlFor="caller_text" required>
-            Call (real-time) transcript
-          </Label>
-          <TextArea
-            onChange={() => {}}
-            id="caller_text"
-            name="caller_text"
-            insertBefore={
-              <Text color="colorTextWeak" as="span" fontWeight="fontWeightSemibold">
-                Caller
-              </Text>
-            }
-            required
-            value={intermediateResult}
-          />
-        </>
+              <ChatLog>
+                {transcript && (
+                  <ChatBookend>
+                    <ChatBookendItem>
+                      <strong>Twilio</strong> real-time voice suggestion
+                    </ChatBookendItem>
+                  </ChatBookend>
+                )}
 
-        <AiSuggestion transcript={transcript} />
-
-        <ChatLog>
-          {transcript && (
-            <ChatBookend>
-              <ChatBookendItem>
-                <strong>Twilio</strong> real-time voice suggestion
-              </ChatBookendItem>
-            </ChatBookend>
-          )}
-
-          {transcript &&
-            transcript.map((item, idx) => {
-              return (
-                <Box
-                  key={idx}
-                  inset={undefined}
-                  gridRow={undefined}
-                  gridColumn={undefined}
-                  gridAutoFlow={undefined}
-                  gridAutoColumns={undefined}
-                  gridAutoRows={undefined}
-                  gridTemplateColumns={undefined}
-                  gridTemplateRows={undefined}
-                  gridTemplateAreas={undefined}
-                  gridArea={undefined}
-                >
-                  <ChatMessage variant={item.direction}>
-                    <ChatBubble>{item.message}</ChatBubble>
-                    <ChatMessageMeta aria-label={item.direction}>
-                      <Tooltip text={item.direction}>
-                        <ChatMessageMetaItem>
-                          <Avatar
-                            name={item.direction}
-                            size="sizeIcon20"
-                            icon={item.direction == 'inbound' ? UserIcon : AgentIcon}
-                          />
-                          {item.direction == 'inbound' ? 'Customer' : 'You'}
-                        </ChatMessageMetaItem>
-                      </Tooltip>
-                    </ChatMessageMeta>
-                  </ChatMessage>
-                </Box>
-              );
-            })}
-        </ChatLog>
-      </Stack>
-    </Box>
+                {transcript &&
+                  transcript.map((item, idx) => {
+                    return (
+                      <Box
+                        key={idx}
+                        inset={undefined}
+                        gridRow={undefined}
+                        gridColumn={undefined}
+                        gridAutoFlow={undefined}
+                        gridAutoColumns={undefined}
+                        gridAutoRows={undefined}
+                        gridTemplateColumns={undefined}
+                        gridTemplateRows={undefined}
+                        gridTemplateAreas={undefined}
+                        gridArea={undefined}
+                      >
+                        <ChatMessage variant={item.direction}>
+                          <ChatBubble>{item.message}</ChatBubble>
+                          <ChatMessageMeta aria-label={item.direction}>
+                            <Tooltip text={item.direction}>
+                              <ChatMessageMetaItem>
+                                <Avatar
+                                  name={item.direction}
+                                  size="sizeIcon20"
+                                  icon={item.direction == 'inbound' ? UserIcon : AgentIcon}
+                                />
+                                {item.direction == 'inbound' ? 'Customer' : 'You'}
+                              </ChatMessageMetaItem>
+                            </Tooltip>
+                          </ChatMessageMeta>
+                        </ChatMessage>
+                      </Box>
+                    );
+                  })}
+              </ChatLog>
+            </Stack>
+          </Box>
 
 
 
