@@ -8,7 +8,7 @@
     "deploy": "twilio-run deploy"
   },
   "dependencies": {
-    "twilio": "^4.11.0",
+    "twilio": "^5.4.4",
     "@twilio/runtime-handler": "1.3.0",
     "axios": "^1.4.0",
     "jsonwebtoken": "^9.0.2",
